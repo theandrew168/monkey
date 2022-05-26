@@ -1,3 +1,3 @@
-module github.com/theandrew168/monkey
+module monkey
 
 go 1.18
