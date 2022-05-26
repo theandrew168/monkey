@@ -1,11 +1,7 @@
-// NOTE: will likely collide with desired "token" var name
 package token
 
-// NOTE: seems redundant when already in the "token" namespace
-type TokenType string
-
 type Token struct {
-	Type    TokenType
+	Kind    string
 	Literal string
 }
 
@@ -34,3 +30,15 @@ const (
 	FUNCTION = "FUNCTION"
 	LET      = "LET"
 )
+
+var keywords = map[string]string{
+	"fn":  FUNCTION,
+	"let": LET,
+}
+
+func LookupIdent(ident string) string {
+	if kind, ok := keywords[ident]; ok {
+		return kind
+	}
+	return IDENT
+}
